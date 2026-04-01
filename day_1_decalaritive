@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout Git') {
+            steps {
+                // Checkout into a subdirectory
+                dir('Terraform') {
+                    git branch: 'main', url: 'https://github.com/CloudDevopsRavina/Terraform'
+                }
+            }
+        }
+        
+        stage('Terraform Init') {
+            steps {
+                // Run commands inside the same subdirectory
+                dir('Terraform') {
+                    sh 'terraform init'
+                }
+            }
+        }
+    }
+}
