@@ -14,8 +14,16 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 // Run commands inside the same subdirectory
-                dir('Terraform') {
+                dir('Terraform/Day-2') {
                     sh 'terraform init'
+                }
+            }
+        }
+         stage('Terraform plan') {
+            steps {
+                // Run commands inside the same subdirectory
+                dir('Terraform/Day-2') {
+                    sh 'terraform plan'
                 }
             }
         }
